@@ -22,7 +22,7 @@ actor ShowsRepositoryLive: ShowsRepository {
         let cached = try? await localDataSource.loadPage(page)
 
         if !forceRefresh, let cached, isFresh(cached.savedAt) {
-            return page(from: cached, number: page)
+            return makePage(from: cached, number: page)
         }
 
         do {
@@ -43,7 +43,7 @@ actor ShowsRepositoryLive: ShowsRepository {
             return ShowsPage(shows: [], nextPage: nil, origin: .network)
         } catch {
             if let cached {
-                return page(from: cached, number: page)
+                return makePage(from: cached, number: page)
             }
             throw error
         }
@@ -73,7 +73,7 @@ actor ShowsRepositoryLive: ShowsRepository {
         }
     }
 
-    private func page(from cache: ShowsPageCacheRecord, number: Int) -> ShowsPage {
+    private func makePage(from cache: ShowsPageCacheRecord, number: Int) -> ShowsPage {
         let shows = cache.shows.map(ShowsMapper.show)
         return ShowsPage(
             shows: shows,

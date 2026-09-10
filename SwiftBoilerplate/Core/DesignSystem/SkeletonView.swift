@@ -8,9 +8,12 @@ struct SkeletonView: View {
     }
 
     var body: some View {
-        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+        let shape = RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+
+        shape
             .fill(AppTheme.Colors.elevated)
             .shimmering()
+            .clipShape(shape)
             .accessibilityHidden(true)
     }
 }

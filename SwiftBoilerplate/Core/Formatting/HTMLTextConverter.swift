@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 enum HTMLTextConverter {
     static func attributedString(from html: String?) -> AttributedString? {
@@ -15,7 +16,12 @@ enum HTMLTextConverter {
             return nil
         }
 
-        return AttributedString(value)
+        let sanitized = NSMutableAttributedString(attributedString: value)
+        sanitized.removeAttribute(
+            .foregroundColor,
+            range: NSRange(location: 0, length: sanitized.length)
+        )
+        return AttributedString(sanitized)
     }
 
     static func plainText(from html: String?) -> String {

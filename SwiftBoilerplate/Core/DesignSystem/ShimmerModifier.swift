@@ -16,9 +16,9 @@ struct ShimmerModifier: ViewModifier {
                     .rotationEffect(.degrees(18))
                     .offset(x: offset * proxy.size.width * 2)
                 }
-                .mask(content)
                 .allowsHitTesting(false)
             }
+            .clipped()
             .onAppear {
                 guard !reduceMotion else { return }
                 withAnimation(.linear(duration: 1.25).repeatForever(autoreverses: false)) {

@@ -10,7 +10,7 @@ actor ShowsRepositoryLive: ShowsRepository {
         remoteDataSource: any ShowsRemoteDataSource,
         localDataSource: any ShowsLocalDataSource,
         cacheLifetime: TimeInterval = 60 * 60,
-        now: @escaping @Sendable () -> Date = Date.init
+        now: @escaping @Sendable () -> Date = { Date() }
     ) {
         self.remoteDataSource = remoteDataSource
         self.localDataSource = localDataSource

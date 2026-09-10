@@ -6,7 +6,7 @@ struct HTMLSummaryView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
-            if let attributed = readableSummary,
+            if let attributed = HTMLTextConverter.attributedString(from: html),
                !attributed.characters.isEmpty {
                 Text(attributed)
                     .font(.body)
@@ -29,13 +29,5 @@ struct HTMLSummaryView: View {
                     .foregroundStyle(AppTheme.Colors.secondaryText)
             }
         }
-    }
-
-    private var readableSummary: AttributedString? {
-        guard var attributed = HTMLTextConverter.attributedString(from: html) else {
-            return nil
-        }
-        attributed.foregroundColor = nil
-        return attributed
     }
 }

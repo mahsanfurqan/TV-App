@@ -31,6 +31,8 @@ struct ShowDetailView: View {
                 )
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
         .navigationTitle("navigation.details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

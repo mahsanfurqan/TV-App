@@ -56,6 +56,8 @@ struct ShowRailView: View {
             }
             .scrollIndicators(.hidden)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .clipped()
     }
 }
 

@@ -28,7 +28,7 @@ struct ShowDetailContentView: View {
     }
 
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical) {
             LazyVStack(alignment: .leading, spacing: AppTheme.Spacing.section) {
                 if let refreshError {
                     Label(
@@ -129,8 +129,11 @@ struct ShowDetailContentView: View {
                     .padding(.horizontal)
                 }
             }
+            .containerRelativeFrame(.horizontal)
             .padding(.bottom, AppTheme.Spacing.section)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
         .refreshable {
             await refresh()
         }

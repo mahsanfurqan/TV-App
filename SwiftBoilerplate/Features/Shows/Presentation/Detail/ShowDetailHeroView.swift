@@ -35,6 +35,7 @@ struct ShowDetailHeroView: View {
                         + Text(verbatim: detail.name)
                 )
         }
+        .frame(maxWidth: .infinity)
         .frame(height: 390)
         .clipped()
     }

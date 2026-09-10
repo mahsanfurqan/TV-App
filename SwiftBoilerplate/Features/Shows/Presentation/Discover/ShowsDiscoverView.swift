@@ -37,6 +37,8 @@ struct ShowsDiscoverView: View {
                 )
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
         .background(AppTheme.Colors.canvas.ignoresSafeArea())
         .navigationTitle("app.title")
         .navigationBarTitleDisplayMode(.inline)

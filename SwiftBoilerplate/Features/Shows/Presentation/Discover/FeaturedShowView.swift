@@ -74,6 +74,7 @@ struct FeaturedShowView: View {
             }
             .padding(AppTheme.Spacing.xLarge)
         }
+        .frame(maxWidth: .infinity)
         .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.large, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: AppTheme.Radius.large, style: .continuous)

@@ -12,13 +12,15 @@ struct ShowsDiscoverContentView: View {
     let refresh: () async -> Void
 
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical) {
             if isSearching {
                 searchContent
             } else {
                 discoverContent
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
         .refreshable { await refresh() }
         .overlay(alignment: .top) {
             if state.isRefreshing {
@@ -66,6 +68,7 @@ struct ShowsDiscoverContentView: View {
                 loadMore: loadMore
             )
         }
+        .containerRelativeFrame(.horizontal)
         .padding(.vertical, AppTheme.Spacing.large)
     }
 
@@ -93,6 +96,7 @@ struct ShowsDiscoverContentView: View {
             }
         }
         .padding()
+        .containerRelativeFrame(.horizontal)
     }
 
     @ViewBuilder

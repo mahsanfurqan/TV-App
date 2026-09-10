@@ -8,7 +8,7 @@ struct LoadingStateView: View {
     }
 
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical) {
             VStack(alignment: .leading, spacing: AppTheme.Spacing.section) {
                 SkeletonView(cornerRadius: AppTheme.Radius.large)
                     .frame(height: 390)
@@ -20,7 +20,8 @@ struct LoadingStateView: View {
                     HStack(spacing: AppTheme.Spacing.medium) {
                         ForEach(0..<3, id: \.self) { _ in
                             SkeletonView()
-                                .frame(width: 132, height: 198)
+                                .aspectRatio(2.0 / 3.0, contentMode: .fit)
+                                .frame(maxWidth: .infinity)
                         }
                     }
                 }
@@ -30,9 +31,11 @@ struct LoadingStateView: View {
                     .foregroundStyle(AppTheme.Colors.secondaryText)
             }
             .padding()
+            .containerRelativeFrame(.horizontal)
         }
         .background(AppTheme.Colors.canvas)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
         .accessibilityElement(children: .contain)
         .accessibilityIdentifier("state.loading")
     }

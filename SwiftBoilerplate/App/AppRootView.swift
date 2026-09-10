@@ -30,6 +30,8 @@ struct AppRootView: View {
                     }
                 }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
         .tint(AppTheme.Colors.accent)
         .environment(\.locale, localizationController.language.locale)
         .preferredColorScheme(.dark)

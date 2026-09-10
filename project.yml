@@ -22,7 +22,7 @@ targets:
           - Config
           - Resources
     resources:
-      - path: SwiftBoilerplate/Resources/Assets.xcassets
+      - path: SwiftBoilerplate/Resources
     info:
       path: SwiftBoilerplate/Config/Info.plist
     configFiles:

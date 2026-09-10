@@ -9,6 +9,7 @@ struct ShowDetailModelTests {
             id: 7,
             name: "Test Show",
             rating: 8.2,
+            genres: ["Drama"],
             summaryHTML: "<p>A <b>great</b> show.</p>",
             premiered: nil,
             originalImageURL: nil,

@@ -11,6 +11,7 @@ struct ShowsRepositoryLiveTests {
                     id: 42,
                     name: "Mapped",
                     rating: RatingDTO(average: nil),
+                    genres: [],
                     image: nil,
                     summary: nil,
                     premiered: nil,
@@ -27,7 +28,16 @@ struct ShowsRepositoryLiveTests {
 
         let page = try await repository.fetchShows(page: 0, forceRefresh: true)
 
-        #expect(page.shows == [TVShow(id: 42, name: "Mapped", rating: nil, mediumImageURL: nil)])
+        #expect(page.shows == [TVShow(
+            id: 42,
+            name: "Mapped",
+            rating: nil,
+            genres: [],
+            premiered: nil,
+            summaryHTML: nil,
+            mediumImageURL: nil,
+            originalImageURL: nil
+        )])
         #expect(page.origin == .network)
         #expect(await local.savedPage(0)?.shows.count == 1)
     }
@@ -39,7 +49,16 @@ struct ShowsRepositoryLiveTests {
         await local.seed(
             ShowsPageCacheRecord(
                 savedAt: oldDate,
-                shows: [ShowRecord(id: 1, name: "Cached", rating: 5, mediumImageURL: nil)]
+                shows: [ShowRecord(
+                    id: 1,
+                    name: "Cached",
+                    rating: 5,
+                    genres: [],
+                    premiered: nil,
+                    summaryHTML: nil,
+                    mediumImageURL: nil,
+                    originalImageURL: nil
+                )]
             ),
             page: 0
         )

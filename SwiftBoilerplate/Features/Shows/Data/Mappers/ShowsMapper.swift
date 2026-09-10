@@ -6,7 +6,11 @@ enum ShowsMapper {
             id: dto.id,
             name: dto.name,
             rating: dto.rating?.average,
-            mediumImageURL: url(dto.image?.medium)
+            genres: dto.genres ?? [],
+            premiered: date(dto.premiered),
+            summaryHTML: dto.summary,
+            mediumImageURL: url(dto.image?.medium),
+            originalImageURL: url(dto.image?.original)
         )
     }
 
@@ -15,7 +19,11 @@ enum ShowsMapper {
             id: record.id,
             name: record.name,
             rating: record.rating,
-            mediumImageURL: url(record.mediumImageURL)
+            genres: record.genres,
+            premiered: record.premiered,
+            summaryHTML: record.summaryHTML,
+            mediumImageURL: url(record.mediumImageURL),
+            originalImageURL: url(record.originalImageURL)
         )
     }
 
@@ -24,7 +32,11 @@ enum ShowsMapper {
             id: show.id,
             name: show.name,
             rating: show.rating,
-            mediumImageURL: show.mediumImageURL?.absoluteString
+            genres: show.genres,
+            premiered: show.premiered,
+            summaryHTML: show.summaryHTML,
+            mediumImageURL: show.mediumImageURL?.absoluteString,
+            originalImageURL: show.originalImageURL?.absoluteString
         )
     }
 
@@ -34,6 +46,7 @@ enum ShowsMapper {
             id: dto.id,
             name: dto.name,
             rating: dto.rating?.average,
+            genres: dto.genres ?? [],
             summaryHTML: dto.summary,
             premiered: date(dto.premiered),
             originalImageURL: url(dto.image?.original),
@@ -49,6 +62,7 @@ enum ShowsMapper {
             id: record.id,
             name: record.name,
             rating: record.rating,
+            genres: record.genres,
             summaryHTML: record.summaryHTML,
             premiered: record.premiered,
             originalImageURL: url(record.originalImageURL),
@@ -91,6 +105,7 @@ enum ShowsMapper {
             id: detail.id,
             name: detail.name,
             rating: detail.rating,
+            genres: detail.genres,
             summaryHTML: detail.summaryHTML,
             premiered: detail.premiered,
             originalImageURL: detail.originalImageURL?.absoluteString,

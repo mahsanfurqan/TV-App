@@ -10,15 +10,18 @@ struct RemoteImageView: View {
     }
 
     var body: some View {
-        AsyncImage(url: url, transaction: Transaction(animation: .easeInOut)) { phase in
+        AsyncImage(
+            url: url,
+            transaction: Transaction(animation: .easeOut(duration: 0.28))
+        ) { phase in
             switch phase {
             case .empty:
-                placeholder
-                    .overlay { ProgressView().controlSize(.small) }
+                SkeletonView(cornerRadius: 0)
             case .success(let image):
                 image
                     .resizable()
                     .aspectRatio(contentMode: contentMode)
+                    .transition(.opacity.combined(with: .scale(scale: 1.015)))
             case .failure:
                 placeholder
             @unknown default:
@@ -29,11 +32,11 @@ struct RemoteImageView: View {
 
     private var placeholder: some View {
         Rectangle()
-            .fill(.quaternary)
+            .fill(AppTheme.Colors.elevated)
             .overlay {
-                Image(systemName: "photo")
+                Image(systemName: "sparkles.tv")
                     .font(.title2)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(AppTheme.Colors.secondaryText)
                     .accessibilityHidden(true)
             }
     }

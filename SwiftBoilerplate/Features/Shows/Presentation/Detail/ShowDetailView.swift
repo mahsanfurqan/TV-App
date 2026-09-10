@@ -12,13 +12,13 @@ struct ShowDetailView: View {
         Group {
             switch model.state.phase {
             case .idle, .loading:
-                LoadingStateView(message: "Loading show details…")
+                LoadingStateView(message: "state.loading.detail")
             case .empty:
-                EmptyStateView(title: "Show unavailable") {
+                EmptyStateView(title: "state.detail_unavailable.title") {
                     Task { await model.retry() }
                 }
             case .failed(let error):
-                ErrorStateView(message: error.message) {
+                ErrorStateView(error: error) {
                     Task { await model.retry() }
                 }
             case .loaded(let detail):
@@ -26,17 +26,18 @@ struct ShowDetailView: View {
                     detail: detail,
                     isRefreshing: model.state.isRefreshing,
                     refreshError: model.state.refreshError,
+                    shareContent: model.shareContent ?? detail.officialURL,
                     refresh: { await model.refresh() }
                 )
             }
         }
-        .navigationTitle("Details")
+        .navigationTitle("navigation.details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             if let shareContent = model.shareContent {
                 ToolbarItem(placement: .topBarTrailing) {
                     ShareLink(item: shareContent) {
-                        Label("Share", systemImage: "square.and.arrow.up")
+                        Label("action.share", systemImage: "square.and.arrow.up")
                     }
                     .accessibilityIdentifier("showDetail.share")
                 }

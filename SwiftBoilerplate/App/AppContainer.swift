@@ -3,9 +3,14 @@ import Foundation
 @MainActor
 struct AppContainer {
     private let showsRepository: any ShowsRepository
+    let localizationController: LocalizationController
 
-    init(showsRepository: any ShowsRepository) {
+    init(
+        showsRepository: any ShowsRepository,
+        localizationController: LocalizationController = LocalizationController()
+    ) {
         self.showsRepository = showsRepository
+        self.localizationController = localizationController
     }
 
     static func live(configuration: AppConfiguration = .live()) -> AppContainer {
@@ -31,10 +36,11 @@ struct AppContainer {
         return AppContainer(showsRepository: repository)
     }
 
-    func makeShowsListModel() -> ShowsListModel {
-        ShowsListModel(
+    func makeShowsDiscoverModel() -> ShowsDiscoverModel {
+        ShowsDiscoverModel(
             fetchShows: FetchShows(repository: showsRepository),
-            refreshShows: RefreshShows(repository: showsRepository)
+            refreshShows: RefreshShows(repository: showsRepository),
+            buildCatalog: BuildShowsCatalog()
         )
     }
 

@@ -1,5 +1,5 @@
-struct ShowsListState: Equatable, Sendable {
-    var phase: LoadState<[TVShow]> = .idle
+struct ShowsDiscoverState: Equatable, Sendable {
+    var phase: LoadState<ShowsCatalog> = .idle
     var isRefreshing = false
     var isLoadingMore = false
     var dataOrigin: ShowsDataOrigin?

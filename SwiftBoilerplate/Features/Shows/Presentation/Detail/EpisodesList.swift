@@ -4,74 +4,49 @@ struct EpisodesList: View {
     let episodes: [ShowEpisode]
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            ForEach(sections) { section in
-                DisclosureGroup(section.title) {
-                    LazyVStack(spacing: 0) {
-                        ForEach(section.episodes) { episode in
-                            EpisodeRow(episode: episode)
-                            if episode.id != section.episodes.last?.id {
-                                Divider()
-                            }
-                        }
-                    }
-                    .padding(.top, 8)
-                }
-                .font(.headline)
+        LazyVStack(spacing: AppTheme.Spacing.small) {
+            ForEach(episodes.sorted(by: episodeOrder)) { episode in
+                EpisodeRow(episode: episode)
             }
         }
     }
 
-    private var sections: [EpisodeSection] {
-        let grouped = Dictionary(grouping: episodes) { $0.seasonNumber }
-        return grouped
-            .map { season, episodes in
-                EpisodeSection(
-                    seasonNumber: season,
-                    episodes: episodes.sorted {
-                        ($0.episodeNumber ?? Int.max) < ($1.episodeNumber ?? Int.max)
-                    }
-                )
-            }
-            .sorted { ($0.seasonNumber ?? Int.max) < ($1.seasonNumber ?? Int.max) }
+    private func episodeOrder(_ lhs: ShowEpisode, _ rhs: ShowEpisode) -> Bool {
+        let left = (lhs.seasonNumber ?? Int.max, lhs.episodeNumber ?? Int.max)
+        let right = (rhs.seasonNumber ?? Int.max, rhs.episodeNumber ?? Int.max)
+        return left < right
     }
 }
-
-private struct EpisodeSection: Identifiable {
-    let seasonNumber: Int?
-    let episodes: [ShowEpisode]
-
-    var id: Int { seasonNumber ?? -1 }
-    var title: String { seasonNumber.map { "Season \($0)" } ?? "Specials" }
-}
-
 private struct EpisodeRow: View {
     let episode: ShowEpisode
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: AppTheme.Spacing.medium) {
             RemoteImageView(url: episode.imageURL)
-                .frame(width: 96, height: 56)
-                .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                .frame(width: 112, height: 66)
+                .clipped()
+                .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.small, style: .continuous))
 
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: AppTheme.Spacing.xSmall) {
                 Text(episode.name)
                     .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.white)
                     .lineLimit(2)
 
-                HStack(spacing: 8) {
-                    Text(episode.code)
+                HStack(spacing: AppTheme.Spacing.small) {
+                    Text(verbatim: episode.code)
                     if let airDate = episode.airDate {
-                        Text(airDate.formatted(date: .abbreviated, time: .omitted))
+                        Text(airDate, format: .dateTime.day().month(.abbreviated).year())
                     }
                 }
                 .font(.caption)
-                .foregroundStyle(.secondary)
+                .foregroundStyle(AppTheme.Colors.secondaryText)
             }
 
             Spacer(minLength: 0)
         }
-        .padding(.vertical, 8)
+        .padding(AppTheme.Spacing.small)
+        .background(AppTheme.Colors.surface, in: RoundedRectangle(cornerRadius: AppTheme.Radius.medium))
         .accessibilityElement(children: .combine)
     }
 }

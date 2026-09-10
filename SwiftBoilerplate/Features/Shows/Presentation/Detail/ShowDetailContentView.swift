@@ -1,72 +1,135 @@
 import SwiftUI
 
 struct ShowDetailContentView: View {
+    @Environment(\.locale) private var locale
+    @State private var selectedSeasonNumber: Int?
+
     let detail: TVShowDetail
     let isRefreshing: Bool
     let refreshError: AppError?
+    let shareContent: String
     let refresh: () async -> Void
+
+    init(
+        detail: TVShowDetail,
+        isRefreshing: Bool,
+        refreshError: AppError?,
+        shareContent: String,
+        refresh: @escaping () async -> Void
+    ) {
+        self.detail = detail
+        self.isRefreshing = isRefreshing
+        self.refreshError = refreshError
+        self.shareContent = shareContent
+        self.refresh = refresh
+        _selectedSeasonNumber = State(
+            initialValue: detail.seasons.first?.number ?? detail.episodes.first?.seasonNumber
+        )
+    }
 
     var body: some View {
         ScrollView {
-            LazyVStack(alignment: .leading, spacing: 24) {
+            LazyVStack(alignment: .leading, spacing: AppTheme.Spacing.section) {
                 if let refreshError {
-                    Label(refreshError.message, systemImage: "exclamationmark.triangle")
+                    Label(
+                        AppErrorLocalizer.message(for: refreshError, locale: locale),
+                        systemImage: "exclamationmark.triangle"
+                    )
                         .font(.footnote)
-                        .foregroundStyle(.secondary)
-                        .padding(10)
+                        .foregroundStyle(.white)
+                        .padding(12)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 10))
+                        .background(AppTheme.Colors.elevated, in: RoundedRectangle(cornerRadius: AppTheme.Radius.medium))
+                        .padding(.horizontal)
                 }
 
-                RemoteImageView(url: detail.originalImageURL, contentMode: .fit)
-                    .aspectRatio(2.0 / 3.0, contentMode: .fit)
-                    .frame(maxWidth: 360)
-                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                    .shadow(color: .black.opacity(0.18), radius: 12, y: 6)
-                    .frame(maxWidth: .infinity)
-                    .accessibilityLabel("Poster for \(detail.name)")
+                ShowDetailHeroView(detail: detail)
 
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: AppTheme.Spacing.large) {
                     Text(detail.name)
-                        .font(.largeTitle.bold())
+                        .font(.system(size: 34, weight: .black, design: .rounded))
+                        .foregroundStyle(.white)
                         .accessibilityIdentifier("showDetail.title")
 
-                    HStack(spacing: 16) {
-                        RatingView(rating: detail.rating)
+                    ScrollView(.horizontal) {
+                        HStack(spacing: AppTheme.Spacing.small) {
+                            RatingView(rating: detail.rating)
 
-                        Label {
-                            Text(detail.premiered?.formatted(date: .abbreviated, time: .omitted) ?? "Unknown premiere")
-                        } icon: {
-                            Image(systemName: "calendar")
+                            MetadataPill {
+                                HStack(spacing: 5) {
+                                    Image(systemName: "calendar")
+                                    if let premiered = detail.premiered {
+                                        Text(premiered, format: .dateTime.day().month(.abbreviated).year())
+                                    } else {
+                                        Text("premiere.unknown")
+                                    }
+                                }
+                            }
+
+                            ForEach(detail.genres.prefix(3), id: \.self) { genre in
+                                MetadataPill {
+                                    Text(verbatim: GenreLocalizer.name(for: genre, locale: locale))
+                                }
+                            }
                         }
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                    }
+                    .scrollIndicators(.hidden)
+
+                    HStack(spacing: AppTheme.Spacing.medium) {
+                        ShareLink(item: shareContent) {
+                            Label("action.share_show", systemImage: "square.and.arrow.up")
+                                .font(.subheadline.weight(.bold))
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 13)
+                        }
+                        .buttonStyle(.plain)
+                        .foregroundStyle(.black)
+                        .background(AppTheme.Colors.accent, in: RoundedRectangle(cornerRadius: AppTheme.Radius.small))
+
+                        if let url = URL(string: detail.officialURL) {
+                            Link(destination: url) {
+                                Image(systemName: "safari")
+                                    .font(.headline)
+                                    .frame(width: 48, height: 44)
+                            }
+                            .foregroundStyle(.white)
+                            .background(AppTheme.Colors.elevated, in: RoundedRectangle(cornerRadius: AppTheme.Radius.small))
+                            .accessibilityLabel(Text("action.open_tvmaze"))
+                        }
                     }
                 }
+                .padding(.horizontal)
 
-                DetailSection(title: "Summary") {
+                DetailSection(title: "section.summary") {
                     HTMLSummaryView(html: detail.summaryHTML)
                 }
+                .padding(.horizontal)
 
                 if !detail.cast.isEmpty {
-                    DetailSection(title: "Cast") {
+                    DetailSection(title: "section.cast") {
                         CastCarousel(cast: detail.cast)
                     }
+                    .padding(.horizontal)
                 }
 
                 if !detail.seasons.isEmpty {
-                    DetailSection(title: "Seasons") {
-                        SeasonsCarousel(seasons: detail.seasons)
+                    DetailSection(title: "section.seasons") {
+                        SeasonsCarousel(
+                            seasons: detail.seasons,
+                            selectedSeasonNumber: $selectedSeasonNumber
+                        )
                     }
+                    .padding(.horizontal)
                 }
 
-                if !detail.episodes.isEmpty {
-                    DetailSection(title: "Episodes") {
-                        EpisodesList(episodes: detail.episodes)
+                if !filteredEpisodes.isEmpty {
+                    DetailSection(title: "section.episodes") {
+                        EpisodesList(episodes: filteredEpisodes)
                     }
+                    .padding(.horizontal)
                 }
             }
-            .padding()
+            .padding(.bottom, AppTheme.Spacing.section)
         }
         .refreshable {
             await refresh()
@@ -74,26 +137,35 @@ struct ShowDetailContentView: View {
         .overlay(alignment: .top) {
             if isRefreshing {
                 ProgressView()
-                    .padding(8)
-                    .background(.regularMaterial, in: Capsule())
+                    .tint(.white)
+                    .padding(10)
+                    .background(.ultraThinMaterial, in: Capsule())
             }
         }
+        .background(AppTheme.Colors.canvas)
+    }
+
+    private var filteredEpisodes: [ShowEpisode] {
+        guard let selectedSeasonNumber else { return detail.episodes }
+        return detail.episodes.filter { $0.seasonNumber == selectedSeasonNumber }
     }
 }
 
 private struct DetailSection<Content: View>: View {
-    let title: String
+    let title: LocalizedStringKey
     private let content: () -> Content
 
-    init(title: String, @ViewBuilder content: @escaping () -> Content) {
+    init(title: LocalizedStringKey, @ViewBuilder content: @escaping () -> Content) {
         self.title = title
         self.content = content
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.medium) {
             Text(title)
-                .font(.title2.bold())
+                .font(.title3.bold())
+                .foregroundStyle(.white)
+                .accessibilityAddTraits(.isHeader)
             content()
         }
         .frame(maxWidth: .infinity, alignment: .leading)

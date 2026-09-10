@@ -4,6 +4,7 @@ struct TVShowDetail: Identifiable, Hashable, Sendable {
     let id: Int
     let name: String
     let rating: Double?
+    let genres: [String]
     let summaryHTML: String?
     let premiered: Date?
     let originalImageURL: URL?

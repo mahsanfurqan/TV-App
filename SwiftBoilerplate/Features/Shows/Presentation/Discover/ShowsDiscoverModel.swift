@@ -1,22 +1,41 @@
+import Foundation
 import Observation
 
 @MainActor
 @Observable
-final class ShowsListModel {
+final class ShowsDiscoverModel {
     private let fetchShows: FetchShows
     private let refreshShows: RefreshShows
+    private let buildCatalog: BuildShowsCatalog
 
-    private(set) var state: ShowsListState
+    private(set) var state: ShowsDiscoverState
+    var searchText = ""
     private var nextPage: Int?
 
     init(
         fetchShows: FetchShows,
         refreshShows: RefreshShows,
-        initialState: ShowsListState = ShowsListState()
+        buildCatalog: BuildShowsCatalog,
+        initialState: ShowsDiscoverState = ShowsDiscoverState()
     ) {
         self.fetchShows = fetchShows
         self.refreshShows = refreshShows
+        self.buildCatalog = buildCatalog
         self.state = initialState
+    }
+
+    var searchResults: [TVShow] {
+        guard case .loaded(let catalog) = state.phase else { return [] }
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return catalog.allShows }
+        return catalog.allShows.filter { show in
+            show.name.localizedCaseInsensitiveContains(query)
+                || show.genres.contains { $0.localizedCaseInsensitiveContains(query) }
+        }
+    }
+
+    var isSearching: Bool {
+        !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
     func loadIfNeeded() async {
@@ -33,8 +52,8 @@ final class ShowsListModel {
     }
 
     func loadMoreIfNeeded(currentShow: TVShow) async {
-        guard case .loaded(let currentShows) = state.phase,
-              currentShow.id == currentShows.last?.id,
+        guard case .loaded(let catalog) = state.phase,
+              currentShow.id == catalog.allShows.last?.id,
               let page = nextPage,
               !state.isLoadingMore else {
             return
@@ -46,9 +65,9 @@ final class ShowsListModel {
 
         do {
             let result = try await fetchShows(page: page)
-            let existingIDs = Set(currentShows.map(\.id))
+            let existingIDs = Set(catalog.allShows.map(\.id))
             let newShows = result.shows.filter { !existingIDs.contains($0.id) }
-            state.phase = .loaded(currentShows + newShows)
+            state.phase = .loaded(buildCatalog(shows: catalog.allShows + newShows))
             state.dataOrigin = result.origin
             nextPage = result.nextPage
         } catch is CancellationError {
@@ -77,13 +96,13 @@ final class ShowsListModel {
                 ? try await refreshShows()
                 : try await fetchShows(page: 0)
 
-            state.phase = result.shows.isEmpty ? .empty : .loaded(result.shows)
+            state.phase = result.shows.isEmpty
+                ? .empty
+                : .loaded(buildCatalog(shows: result.shows))
             state.dataOrigin = result.origin
             nextPage = result.nextPage
         } catch is CancellationError {
-            if !hasContent {
-                state.phase = .idle
-            }
+            if !hasContent { state.phase = .idle }
         } catch {
             if hasContent {
                 state.refreshError = AppError(error: error)

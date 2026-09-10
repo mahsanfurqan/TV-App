@@ -30,16 +30,16 @@ Dependencies point inward. Domain never imports Data or Presentation. Data never
 
 ## Request flow
 
-### Show list
+### Show discovery
 
-1. `ShowsListView` emits an action.
-2. `ShowsListModel` coordinates presentation state.
+1. `ShowsDiscoverView` emits an action.
+2. `ShowsDiscoverModel` coordinates loading, refresh, pagination, and search presentation state.
 3. `FetchShows` or `RefreshShows` invokes `ShowsRepository`.
 4. `ShowsRepositoryLive` applies fresh-cache, network, and stale-cache fallback policy.
 5. `LiveShowsRemoteDataSource` calls `/shows?page={page}`.
 6. `ShowsMapper` converts external DTOs or cache records into `TVShow` entities.
-7. The main-actor model updates `LoadState<[TVShow]>`.
-8. SwiftUI renders the matching state.
+7. `BuildShowsCatalog` deterministically derives the featured show, highest-rated rail, fresh-premiere rail, and genre collections.
+8. The main-actor model updates `LoadState<ShowsCatalog>` and SwiftUI renders the matching state.
 
 ### Show detail
 
@@ -47,8 +47,16 @@ Dependencies point inward. Domain never imports Data or Presentation. Data never
 2. `ShowDetailModel` calls `FetchShowDetail`.
 3. The remote source requests the main show with embedded episodes and cast while requesting seasons concurrently.
 4. The repository maps and caches one complete `TVShowDetail`.
-5. Presentation renders summary HTML, cast, seasons, and episodes grouped by season.
+5. Presentation renders summary HTML, cast, a season selector, and matching episodes.
 6. `ShareLink` receives a plain-text payload produced from the loaded entity.
+
+### Localization
+
+1. `LocalizationController` owns the selected `AppLanguage` on the main actor.
+2. `LanguageStoring` isolates persistence; the live implementation uses `UserDefaults`.
+3. `AppRootView` injects the selected locale through SwiftUI's environment.
+4. `Localizable.xcstrings` contains English and Indonesian UI copy; `InfoPlist.xcstrings` localizes the display name.
+5. API-backed titles, summaries, character names, and other remote content remain verbatim.
 
 ## State placement
 
@@ -65,7 +73,7 @@ Core/DesignSystem/ErrorStateView.swift
 State with screen meaning remains beside its screen:
 
 ```text
-Features/Shows/Presentation/List/ShowsListState.swift
+Features/Shows/Presentation/Discover/ShowsDiscoverState.swift
 Features/Shows/Presentation/Detail/ShowDetailState.swift
 ```
 
@@ -84,12 +92,15 @@ This avoids an unbounded `Utils` folder while preserving reuse.
 - Hold small technical capabilities shared across features.
 - Never import a concrete feature.
 - Keep generic state and reusable UI configurable.
+- Centralize visual tokens and reusable components in `Core/DesignSystem`, not in an unbounded `Utils` folder.
+- Own app-wide localization infrastructure while feature-specific text mapping stays with its feature.
 
 ### Domain
 
 - Model business language with value types.
 - Define repository capabilities as protocols.
 - Give meaningful operations dedicated use cases.
+- Derive UI-ready business collections in pure, testable use cases such as `BuildShowsCatalog`.
 - Remain independent of UI, transport, cache, and external schemas.
 
 ### Data
@@ -106,6 +117,7 @@ This avoids an unbounded `Utils` folder while preserving reuse.
 - Represent complete screen state explicitly.
 - Never call URLSession or FileManager directly.
 - Convert HTML only for presentation and sharing.
+- Keep remote content verbatim while localizing every app-owned label, action, and state message.
 
 ## Copying the master feature
 
@@ -120,4 +132,3 @@ When adding another feature:
 7. Mirror the unit-test structure using protocol-based stubs.
 
 Do not move feature-only types into Core merely to reduce duplication. Promote a type only after it is genuinely reusable.
-

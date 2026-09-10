@@ -13,6 +13,7 @@ struct ShowsMapperTests {
 
         #expect(show.id == 1)
         #expect(show.rating == nil)
+        #expect(show.genres.isEmpty)
         #expect(show.mediumImageURL == nil)
     }
 
@@ -22,6 +23,7 @@ struct ShowsMapperTests {
             id: 1,
             name: "Dated",
             rating: RatingDTO(average: 7),
+            genres: ["Drama"],
             image: nil,
             summary: nil,
             premiered: "2020-05-21",
@@ -33,6 +35,7 @@ struct ShowsMapperTests {
         )
 
         #expect(detail.premiered != nil)
+        #expect(detail.genres == ["Drama"])
     }
 
     @Test("HTML summary produces readable plain text")
@@ -59,6 +62,7 @@ struct ShowsMapperTests {
             id: 1,
             name: "Complete",
             rating: RatingDTO(average: 8.4),
+            genres: ["Drama"],
             image: nil,
             summary: "<p>Summary</p>",
             premiered: "2020-05-21",

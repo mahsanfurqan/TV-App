@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct EmptyStateView: View {
-    let title: String
-    let message: String
+    let title: LocalizedStringKey
+    let message: LocalizedStringKey
     let retry: () -> Void
 
     init(
-        title: String = "No shows",
-        message: String = "There is no content to display yet.",
+        title: LocalizedStringKey = "state.empty.title",
+        message: LocalizedStringKey = "state.empty.message",
         retry: @escaping () -> Void
     ) {
         self.title = title
@@ -17,13 +17,16 @@ struct EmptyStateView: View {
 
     var body: some View {
         ContentUnavailableView {
-            Label(title, systemImage: "tv")
+            Label(title, systemImage: "sparkles.tv")
         } description: {
             Text(message)
         } actions: {
-            Button("Try Again", action: retry)
+            Button("action.try_again", action: retry)
                 .buttonStyle(.borderedProminent)
+                .tint(AppTheme.Colors.accent)
         }
+        .foregroundStyle(.white)
+        .background(AppTheme.Colors.canvas)
         .accessibilityIdentifier("state.empty")
     }
 }

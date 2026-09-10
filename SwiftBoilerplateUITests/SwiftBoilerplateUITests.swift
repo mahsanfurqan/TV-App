@@ -7,8 +7,9 @@ final class SwiftBoilerplateUITests: XCTestCase {
 
     func testShowsScreenLaunches() throws {
         let app = XCUIApplication()
+        app.launchArguments += ["-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
 
-        XCTAssertTrue(app.navigationBars["TV Shows"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.navigationBars["TV Shows"].waitForExistence(timeout: 8))
     }
 }

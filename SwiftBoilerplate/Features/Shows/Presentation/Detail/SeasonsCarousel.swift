@@ -2,32 +2,44 @@ import SwiftUI
 
 struct SeasonsCarousel: View {
     let seasons: [ShowSeason]
+    @Binding var selectedSeasonNumber: Int?
 
     var body: some View {
         ScrollView(.horizontal) {
-            LazyHStack(alignment: .top, spacing: 12) {
+            LazyHStack(spacing: AppTheme.Spacing.small) {
                 ForEach(seasons) { season in
-                    VStack(alignment: .leading, spacing: 6) {
-                        RemoteImageView(url: season.imageURL)
-                            .frame(width: 105, height: 145)
-                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                    Button {
+                        withAnimation(.easeInOut(duration: 0.18)) {
+                            selectedSeasonNumber = season.number
+                        }
+                    } label: {
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text("season.label") + Text(verbatim: " \(season.number)")
 
-                        Text("Season \(season.number)")
-                            .font(.subheadline.weight(.semibold))
-
-                        Text(episodeCount(for: season))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+                            if let count = season.episodeOrder {
+                                Text(verbatim: "\(count) ")
+                                    + Text(LocalizedStringKey(
+                                        count == 1 ? "episode.singular" : "episode.plural"
+                                    ))
+                            } else {
+                                Text("episode.count_unknown")
+                            }
+                        }
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(selectedSeasonNumber == season.number ? .black : .white)
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 10)
+                        .background(
+                            selectedSeasonNumber == season.number
+                                ? AppTheme.Colors.accent
+                                : AppTheme.Colors.elevated,
+                            in: RoundedRectangle(cornerRadius: AppTheme.Radius.small)
+                        )
                     }
-                    .frame(width: 105, alignment: .leading)
-                    .accessibilityElement(children: .combine)
+                    .buttonStyle(.plain)
                 }
             }
         }
         .scrollIndicators(.hidden)
-    }
-
-    private func episodeCount(for season: ShowSeason) -> String {
-        season.episodeOrder.map { "\($0) episodes" } ?? "Episode count unknown"
     }
 }

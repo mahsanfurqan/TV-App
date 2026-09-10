@@ -1,20 +1,39 @@
 import SwiftUI
 
 struct LoadingStateView: View {
-    let message: String
+    let message: LocalizedStringKey
 
-    init(message: String = "Loading…") {
+    init(message: LocalizedStringKey = "state.loading") {
         self.message = message
     }
 
     var body: some View {
-        VStack(spacing: 12) {
-            ProgressView()
-            Text(message)
-                .foregroundStyle(.secondary)
+        ScrollView {
+            VStack(alignment: .leading, spacing: AppTheme.Spacing.section) {
+                SkeletonView(cornerRadius: AppTheme.Radius.large)
+                    .frame(height: 390)
+
+                VStack(alignment: .leading, spacing: AppTheme.Spacing.medium) {
+                    SkeletonView(cornerRadius: 6)
+                        .frame(width: 170, height: 22)
+
+                    HStack(spacing: AppTheme.Spacing.medium) {
+                        ForEach(0..<3, id: \.self) { _ in
+                            SkeletonView()
+                                .frame(width: 132, height: 198)
+                        }
+                    }
+                }
+
+                Text(message)
+                    .font(.footnote)
+                    .foregroundStyle(AppTheme.Colors.secondaryText)
+            }
+            .padding()
         }
+        .background(AppTheme.Colors.canvas)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .accessibilityElement(children: .combine)
+        .accessibilityElement(children: .contain)
         .accessibilityIdentifier("state.loading")
     }
 }

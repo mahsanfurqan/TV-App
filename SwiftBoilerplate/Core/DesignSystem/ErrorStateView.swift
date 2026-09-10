@@ -1,30 +1,31 @@
 import SwiftUI
 
 struct ErrorStateView: View {
-    let title: String
-    let message: String
+    @Environment(\.locale) private var locale
+    let error: AppError
     let retry: () -> Void
 
-    init(
-        title: String = "Unable to load",
-        message: String,
-        retry: @escaping () -> Void
-    ) {
-        self.title = title
-        self.message = message
+    init(error: AppError, retry: @escaping () -> Void) {
+        self.error = error
         self.retry = retry
     }
 
     var body: some View {
         ContentUnavailableView {
-            Label(title, systemImage: "wifi.exclamationmark")
+            Label(
+                AppErrorLocalizer.title(for: error, locale: locale),
+                systemImage: "wifi.exclamationmark"
+            )
         } description: {
-            Text(message)
+            Text(AppErrorLocalizer.message(for: error, locale: locale))
         } actions: {
-            Button("Retry", action: retry)
+            Button("action.retry", action: retry)
                 .buttonStyle(.borderedProminent)
+                .tint(AppTheme.Colors.accent)
                 .accessibilityIdentifier("state.retry")
         }
+        .foregroundStyle(.white)
+        .background(AppTheme.Colors.canvas)
         .accessibilityIdentifier("state.error")
     }
 }

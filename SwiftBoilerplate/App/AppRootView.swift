@@ -3,19 +3,26 @@ import SwiftUI
 @MainActor
 struct AppRootView: View {
     @State private var router = AppRouter()
-    @State private var showsListModel: ShowsListModel
+    @State private var showsDiscoverModel: ShowsDiscoverModel
+    @State private var localizationController: LocalizationController
     private let container: AppContainer
 
     init(container: AppContainer) {
         self.container = container
-        _showsListModel = State(initialValue: container.makeShowsListModel())
+        _showsDiscoverModel = State(initialValue: container.makeShowsDiscoverModel())
+        _localizationController = State(initialValue: container.localizationController)
     }
 
     var body: some View {
         @Bindable var router = router
 
         NavigationStack(path: $router.path) {
-            ShowsListView(model: showsListModel, router: router)
+            ShowsDiscoverView(model: showsDiscoverModel, router: router)
+                .toolbar {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        LanguageMenu(controller: localizationController)
+                    }
+                }
                 .navigationDestination(for: AppRoute.self) { route in
                     switch route {
                     case .showDetail(let id):
@@ -23,5 +30,8 @@ struct AppRootView: View {
                     }
                 }
         }
+        .tint(AppTheme.Colors.accent)
+        .environment(\.locale, localizationController.language.locale)
+        .preferredColorScheme(.dark)
     }
 }

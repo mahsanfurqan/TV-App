@@ -5,20 +5,21 @@ struct CastCarousel: View {
 
     var body: some View {
         ScrollView(.horizontal) {
-            LazyHStack(alignment: .top, spacing: 12) {
+            LazyHStack(alignment: .top, spacing: AppTheme.Spacing.medium) {
                 ForEach(cast) { member in
                     VStack(alignment: .leading, spacing: 6) {
                         RemoteImageView(url: member.imageURL)
                             .frame(width: 110, height: 150)
-                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .clipShape(RoundedRectangle(cornerRadius: AppTheme.Radius.medium, style: .continuous))
 
                         Text(member.personName)
                             .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.white)
                             .lineLimit(2)
 
-                        Text("as \(member.characterName)")
+                        (Text("cast.as") + Text(verbatim: " ") + Text(verbatim: member.characterName))
                             .font(.caption)
-                            .foregroundStyle(.secondary)
+                            .foregroundStyle(AppTheme.Colors.secondaryText)
                             .lineLimit(2)
                     }
                     .frame(width: 110, alignment: .leading)

@@ -1,0 +1,2 @@
+APP_DISPLAY_NAME = TV Shows Dev
+API_BASE_URL = https:/$()/api.tvmaze.com

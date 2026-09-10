@@ -1,0 +1,221 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B00000000000000000000001 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000001 /* AppConfiguration.swift */; };
+		B00000000000000000000002 /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000002 /* AppContainer.swift */; };
+		B00000000000000000000003 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000003 /* AppRootView.swift */; };
+		B00000000000000000000004 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000004 /* AppRouter.swift */; };
+		B00000000000000000000005 /* SwiftBoilerplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000005 /* SwiftBoilerplateApp.swift */; };
+		B00000000000000000000006 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000006 /* EmptyStateView.swift */; };
+		B00000000000000000000007 /* ErrorStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000007 /* ErrorStateView.swift */; };
+		B00000000000000000000008 /* LoadingStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000008 /* LoadingStateView.swift */; };
+		B00000000000000000000009 /* RemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000009 /* RemoteImageView.swift */; };
+		B0000000000000000000000A /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000000A /* AppError.swift */; };
+		B0000000000000000000000B /* HTMLTextConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000000B /* HTMLTextConverter.swift */; };
+		B0000000000000000000000C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000000C /* APIClient.swift */; };
+		B0000000000000000000000D /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000000D /* APIError.swift */; };
+		B0000000000000000000000E /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000000E /* Endpoint.swift */; };
+		B0000000000000000000000F /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000000F /* HTTPMethod.swift */; };
+		B00000000000000000000010 /* URLSessionAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000010 /* URLSessionAPIClient.swift */; };
+		B00000000000000000000011 /* LoadState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000011 /* LoadState.swift */; };
+		B00000000000000000000012 /* ShowDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000012 /* ShowDTO.swift */; };
+		B00000000000000000000013 /* ShowRelatedDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000013 /* ShowRelatedDTO.swift */; };
+		B00000000000000000000014 /* ShowRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000014 /* ShowRecords.swift */; };
+		B00000000000000000000015 /* ShowsLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000015 /* ShowsLocalDataSource.swift */; };
+		B00000000000000000000016 /* ShowsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000016 /* ShowsMapper.swift */; };
+		B00000000000000000000017 /* ShowsRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000017 /* ShowsRemoteDataSource.swift */; };
+		B00000000000000000000018 /* ShowsRepositoryLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000018 /* ShowsRepositoryLive.swift */; };
+		B00000000000000000000019 /* CastMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000019 /* CastMember.swift */; };
+		B0000000000000000000001A /* ShowEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000001A /* ShowEpisode.swift */; };
+		B0000000000000000000001B /* ShowSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000001B /* ShowSeason.swift */; };
+		B0000000000000000000001C /* ShowsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000001C /* ShowsPage.swift */; };
+		B0000000000000000000001D /* TVShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000001D /* TVShow.swift */; };
+		B0000000000000000000001E /* TVShowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000001E /* TVShowDetail.swift */; };
+		B0000000000000000000001F /* ShowsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000001F /* ShowsRepository.swift */; };
+		B00000000000000000000020 /* FetchShowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000020 /* FetchShowDetail.swift */; };
+		B00000000000000000000021 /* FetchShows.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000021 /* FetchShows.swift */; };
+		B00000000000000000000022 /* RefreshShows.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000022 /* RefreshShows.swift */; };
+		B00000000000000000000023 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000023 /* RatingView.swift */; };
+		B00000000000000000000024 /* CastCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000024 /* CastCarousel.swift */; };
+		B00000000000000000000025 /* EpisodesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000025 /* EpisodesList.swift */; };
+		B00000000000000000000026 /* HTMLSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000026 /* HTMLSummaryView.swift */; };
+		B00000000000000000000027 /* SeasonsCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000027 /* SeasonsCarousel.swift */; };
+		B00000000000000000000028 /* ShowDetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000028 /* ShowDetailContentView.swift */; };
+		B00000000000000000000029 /* ShowDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000029 /* ShowDetailModel.swift */; };
+		B0000000000000000000002A /* ShowDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000002A /* ShowDetailState.swift */; };
+		B0000000000000000000002B /* ShowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000002B /* ShowDetailView.swift */; };
+		B0000000000000000000002C /* ShowCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000002C /* ShowCardView.swift */; };
+		B0000000000000000000002D /* ShowsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000002D /* ShowsGridView.swift */; };
+		B0000000000000000000002E /* ShowsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000002E /* ShowsListModel.swift */; };
+		B0000000000000000000002F /* ShowsListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0000000000000000000002F /* ShowsListState.swift */; };
+		B00000000000000000000030 /* ShowsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000030 /* ShowsListView.swift */; };
+		B00000000000000000000031 /* ShowsPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000031 /* ShowsPreviews.swift */; };
+		B00000000000000000000040 /* ShowDetailModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000040 /* ShowDetailModelTests.swift */; };
+		B00000000000000000000041 /* ShowsListModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000041 /* ShowsListModelTests.swift */; };
+		B00000000000000000000042 /* ShowsMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000042 /* ShowsMapperTests.swift */; };
+		B00000000000000000000043 /* ShowsRepositoryLiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000043 /* ShowsRepositoryLiveTests.swift */; };
+		B00000000000000000000050 /* SwiftBoilerplateUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000050 /* SwiftBoilerplateUITests.swift */; };
+		B00000000000000000000060 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C00000000000000000000060 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		900000000000000000000001 = {isa = PBXContainerItemProxy; containerPortal = 010000000000000000000001; proxyType = 1; remoteGlobalIDString = E00000000000000000000001; remoteInfo = SwiftBoilerplate; };
+		900000000000000000000002 = {isa = PBXContainerItemProxy; containerPortal = 010000000000000000000001; proxyType = 1; remoteGlobalIDString = E00000000000000000000001; remoteInfo = SwiftBoilerplate; };
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C00000000000000000000001 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		C00000000000000000000002 /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		C00000000000000000000003 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
+		C00000000000000000000004 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		C00000000000000000000005 /* SwiftBoilerplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBoilerplateApp.swift; sourceTree = "<group>"; };
+		C00000000000000000000006 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		C00000000000000000000007 /* ErrorStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStateView.swift; sourceTree = "<group>"; };
+		C00000000000000000000008 /* LoadingStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingStateView.swift; sourceTree = "<group>"; };
+		C00000000000000000000009 /* RemoteImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImageView.swift; sourceTree = "<group>"; };
+		C0000000000000000000000A /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		C0000000000000000000000B /* HTMLTextConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextConverter.swift; sourceTree = "<group>"; };
+		C0000000000000000000000C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		C0000000000000000000000D /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		C0000000000000000000000E /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		C0000000000000000000000F /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		C00000000000000000000010 /* URLSessionAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionAPIClient.swift; sourceTree = "<group>"; };
+		C00000000000000000000011 /* LoadState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadState.swift; sourceTree = "<group>"; };
+		C00000000000000000000012 /* ShowDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDTO.swift; sourceTree = "<group>"; };
+		C00000000000000000000013 /* ShowRelatedDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRelatedDTO.swift; sourceTree = "<group>"; };
+		C00000000000000000000014 /* ShowRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowRecords.swift; sourceTree = "<group>"; };
+		C00000000000000000000015 /* ShowsLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsLocalDataSource.swift; sourceTree = "<group>"; };
+		C00000000000000000000016 /* ShowsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsMapper.swift; sourceTree = "<group>"; };
+		C00000000000000000000017 /* ShowsRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsRemoteDataSource.swift; sourceTree = "<group>"; };
+		C00000000000000000000018 /* ShowsRepositoryLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsRepositoryLive.swift; sourceTree = "<group>"; };
+		C00000000000000000000019 /* CastMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastMember.swift; sourceTree = "<group>"; };
+		C0000000000000000000001A /* ShowEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEpisode.swift; sourceTree = "<group>"; };
+		C0000000000000000000001B /* ShowSeason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowSeason.swift; sourceTree = "<group>"; };
+		C0000000000000000000001C /* ShowsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsPage.swift; sourceTree = "<group>"; };
+		C0000000000000000000001D /* TVShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShow.swift; sourceTree = "<group>"; };
+		C0000000000000000000001E /* TVShowDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowDetail.swift; sourceTree = "<group>"; };
+		C0000000000000000000001F /* ShowsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsRepository.swift; sourceTree = "<group>"; };
+		C00000000000000000000020 /* FetchShowDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShowDetail.swift; sourceTree = "<group>"; };
+		C00000000000000000000021 /* FetchShows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchShows.swift; sourceTree = "<group>"; };
+		C00000000000000000000022 /* RefreshShows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshShows.swift; sourceTree = "<group>"; };
+		C00000000000000000000023 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		C00000000000000000000024 /* CastCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCarousel.swift; sourceTree = "<group>"; };
+		C00000000000000000000025 /* EpisodesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesList.swift; sourceTree = "<group>"; };
+		C00000000000000000000026 /* HTMLSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLSummaryView.swift; sourceTree = "<group>"; };
+		C00000000000000000000027 /* SeasonsCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsCarousel.swift; sourceTree = "<group>"; };
+		C00000000000000000000028 /* ShowDetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailContentView.swift; sourceTree = "<group>"; };
+		C00000000000000000000029 /* ShowDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailModel.swift; sourceTree = "<group>"; };
+		C0000000000000000000002A /* ShowDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailState.swift; sourceTree = "<group>"; };
+		C0000000000000000000002B /* ShowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailView.swift; sourceTree = "<group>"; };
+		C0000000000000000000002C /* ShowCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCardView.swift; sourceTree = "<group>"; };
+		C0000000000000000000002D /* ShowsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsGridView.swift; sourceTree = "<group>"; };
+		C0000000000000000000002E /* ShowsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListModel.swift; sourceTree = "<group>"; };
+		C0000000000000000000002F /* ShowsListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListState.swift; sourceTree = "<group>"; };
+		C00000000000000000000030 /* ShowsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListView.swift; sourceTree = "<group>"; };
+		C00000000000000000000031 /* ShowsPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsPreviews.swift; sourceTree = "<group>"; };
+		C00000000000000000000040 /* ShowDetailModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailModelTests.swift; sourceTree = "<group>"; };
+		C00000000000000000000041 /* ShowsListModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsListModelTests.swift; sourceTree = "<group>"; };
+		C00000000000000000000042 /* ShowsMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsMapperTests.swift; sourceTree = "<group>"; };
+		C00000000000000000000043 /* ShowsRepositoryLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsRepositoryLiveTests.swift; sourceTree = "<group>"; };
+		C00000000000000000000050 /* SwiftBoilerplateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftBoilerplateUITests.swift; sourceTree = "<group>"; };
+		C00000000000000000000060 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C00000000000000000000070 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C00000000000000000000071 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		C00000000000000000000072 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		D00000000000000000000001 /* SwiftBoilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftBoilerplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00000000000000000000002 /* SwiftBoilerplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBoilerplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D00000000000000000000003 /* SwiftBoilerplateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBoilerplateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F00000000000000000000001 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F00000000000000000000002 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F00000000000000000000003 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A00000000000000000000001 = {isa = PBXGroup; children = (A00000000000000000000002, A00000000000000000000003, A00000000000000000000004, A00000000000000000000005, A00000000000000000000006, A00000000000000000000007,); sourceTree = "<group>"; };
+		A00000000000000000000002 /* SwiftBoilerplate */ = {isa = PBXGroup; children = (A00000000000000000000100 /* App */, A00000000000000000000101 /* Core */, A00000000000000000000107 /* Features */,); path = SwiftBoilerplate; sourceTree = "<group>"; };
+		A00000000000000000000100 /* App */ = {isa = PBXGroup; children = (C00000000000000000000001 /* AppConfiguration.swift */, C00000000000000000000002 /* AppContainer.swift */, C00000000000000000000003 /* AppRootView.swift */, C00000000000000000000004 /* AppRouter.swift */, C00000000000000000000005 /* SwiftBoilerplateApp.swift */,); path = App; sourceTree = "<group>"; };
+		A00000000000000000000101 /* Core */ = {isa = PBXGroup; children = (A00000000000000000000102 /* DesignSystem */, A00000000000000000000103 /* Errors */, A00000000000000000000104 /* Formatting */, A00000000000000000000105 /* Networking */, A00000000000000000000106 /* State */,); path = Core; sourceTree = "<group>"; };
+		A00000000000000000000102 /* DesignSystem */ = {isa = PBXGroup; children = (C00000000000000000000006 /* EmptyStateView.swift */, C00000000000000000000007 /* ErrorStateView.swift */, C00000000000000000000008 /* LoadingStateView.swift */, C00000000000000000000009 /* RemoteImageView.swift */,); path = DesignSystem; sourceTree = "<group>"; };
+		A00000000000000000000103 /* Errors */ = {isa = PBXGroup; children = (C0000000000000000000000A /* AppError.swift */,); path = Errors; sourceTree = "<group>"; };
+		A00000000000000000000104 /* Formatting */ = {isa = PBXGroup; children = (C0000000000000000000000B /* HTMLTextConverter.swift */,); path = Formatting; sourceTree = "<group>"; };
+		A00000000000000000000105 /* Networking */ = {isa = PBXGroup; children = (C0000000000000000000000C /* APIClient.swift */, C0000000000000000000000D /* APIError.swift */, C0000000000000000000000E /* Endpoint.swift */, C0000000000000000000000F /* HTTPMethod.swift */, C00000000000000000000010 /* URLSessionAPIClient.swift */,); path = Networking; sourceTree = "<group>"; };
+		A00000000000000000000106 /* State */ = {isa = PBXGroup; children = (C00000000000000000000011 /* LoadState.swift */,); path = State; sourceTree = "<group>"; };
+		A00000000000000000000107 /* Features */ = {isa = PBXGroup; children = (A00000000000000000000108 /* Shows */,); path = Features; sourceTree = "<group>"; };
+		A00000000000000000000108 /* Shows */ = {isa = PBXGroup; children = (A00000000000000000000109 /* Data */, A0000000000000000000010F /* Domain */, A00000000000000000000113 /* Presentation */,); path = Shows; sourceTree = "<group>"; };
+		A00000000000000000000109 /* Data */ = {isa = PBXGroup; children = (A0000000000000000000010A /* DTO */, A0000000000000000000010B /* Local */, A0000000000000000000010C /* Mappers */, A0000000000000000000010D /* Remote */, A0000000000000000000010E /* Repositories */,); path = Data; sourceTree = "<group>"; };
+		A0000000000000000000010A /* DTO */ = {isa = PBXGroup; children = (C00000000000000000000012 /* ShowDTO.swift */, C00000000000000000000013 /* ShowRelatedDTO.swift */,); path = DTO; sourceTree = "<group>"; };
+		A0000000000000000000010B /* Local */ = {isa = PBXGroup; children = (C00000000000000000000014 /* ShowRecords.swift */, C00000000000000000000015 /* ShowsLocalDataSource.swift */,); path = Local; sourceTree = "<group>"; };
+		A0000000000000000000010C /* Mappers */ = {isa = PBXGroup; children = (C00000000000000000000016 /* ShowsMapper.swift */,); path = Mappers; sourceTree = "<group>"; };
+		A0000000000000000000010D /* Remote */ = {isa = PBXGroup; children = (C00000000000000000000017 /* ShowsRemoteDataSource.swift */,); path = Remote; sourceTree = "<group>"; };
+		A0000000000000000000010E /* Repositories */ = {isa = PBXGroup; children = (C00000000000000000000018 /* ShowsRepositoryLive.swift */,); path = Repositories; sourceTree = "<group>"; };
+		A0000000000000000000010F /* Domain */ = {isa = PBXGroup; children = (A00000000000000000000110 /* Entities */, A00000000000000000000111 /* Repositories */, A00000000000000000000112 /* UseCases */,); path = Domain; sourceTree = "<group>"; };
+		A00000000000000000000110 /* Entities */ = {isa = PBXGroup; children = (C00000000000000000000019 /* CastMember.swift */, C0000000000000000000001A /* ShowEpisode.swift */, C0000000000000000000001B /* ShowSeason.swift */, C0000000000000000000001C /* ShowsPage.swift */, C0000000000000000000001D /* TVShow.swift */, C0000000000000000000001E /* TVShowDetail.swift */,); path = Entities; sourceTree = "<group>"; };
+		A00000000000000000000111 /* Repositories */ = {isa = PBXGroup; children = (C0000000000000000000001F /* ShowsRepository.swift */,); path = Repositories; sourceTree = "<group>"; };
+		A00000000000000000000112 /* UseCases */ = {isa = PBXGroup; children = (C00000000000000000000020 /* FetchShowDetail.swift */, C00000000000000000000021 /* FetchShows.swift */, C00000000000000000000022 /* RefreshShows.swift */,); path = UseCases; sourceTree = "<group>"; };
+		A00000000000000000000113 /* Presentation */ = {isa = PBXGroup; children = (A00000000000000000000114 /* Components */, A00000000000000000000115 /* Detail */, A00000000000000000000116 /* List */, A00000000000000000000117 /* Previews */,); path = Presentation; sourceTree = "<group>"; };
+		A00000000000000000000114 /* Components */ = {isa = PBXGroup; children = (C00000000000000000000023 /* RatingView.swift */,); path = Components; sourceTree = "<group>"; };
+		A00000000000000000000115 /* Detail */ = {isa = PBXGroup; children = (C00000000000000000000024 /* CastCarousel.swift */, C00000000000000000000025 /* EpisodesList.swift */, C00000000000000000000026 /* HTMLSummaryView.swift */, C00000000000000000000027 /* SeasonsCarousel.swift */, C00000000000000000000028 /* ShowDetailContentView.swift */, C00000000000000000000029 /* ShowDetailModel.swift */, C0000000000000000000002A /* ShowDetailState.swift */, C0000000000000000000002B /* ShowDetailView.swift */,); path = Detail; sourceTree = "<group>"; };
+		A00000000000000000000116 /* List */ = {isa = PBXGroup; children = (C0000000000000000000002C /* ShowCardView.swift */, C0000000000000000000002D /* ShowsGridView.swift */, C0000000000000000000002E /* ShowsListModel.swift */, C0000000000000000000002F /* ShowsListState.swift */, C00000000000000000000030 /* ShowsListView.swift */,); path = List; sourceTree = "<group>"; };
+		A00000000000000000000117 /* Previews */ = {isa = PBXGroup; children = (C00000000000000000000031 /* ShowsPreviews.swift */,); path = Previews; sourceTree = "<group>"; };
+		A00000000000000000000003 /* Resources */ = {isa = PBXGroup; children = (C00000000000000000000060,); path = SwiftBoilerplate/Resources; sourceTree = "<group>"; };
+		A00000000000000000000004 /* Config */ = {isa = PBXGroup; children = (C00000000000000000000070, C00000000000000000000071, C00000000000000000000072,); path = SwiftBoilerplate/Config; sourceTree = "<group>"; };
+		A00000000000000000000005 /* SwiftBoilerplateTests */ = {isa = PBXGroup; children = (C00000000000000000000040, C00000000000000000000041, C00000000000000000000042, C00000000000000000000043,); path = SwiftBoilerplateTests; sourceTree = "<group>"; };
+		A00000000000000000000006 /* SwiftBoilerplateUITests */ = {isa = PBXGroup; children = (C00000000000000000000050,); path = SwiftBoilerplateUITests; sourceTree = "<group>"; };
+		A00000000000000000000007 /* Products */ = {isa = PBXGroup; children = (D00000000000000000000001, D00000000000000000000002, D00000000000000000000003,); name = Products; sourceTree = "<group>"; };
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E00000000000000000000001 /* SwiftBoilerplate */ = {isa = PBXNativeTarget; buildConfigurationList = 120000000000000000000001; buildPhases = (F100000000000000000000001, F00000000000000000000001, F200000000000000000000001,); buildRules = (); dependencies = (); name = SwiftBoilerplate; productName = SwiftBoilerplate; productReference = D00000000000000000000001; productType = "com.apple.product-type.application"; };
+		E00000000000000000000002 /* SwiftBoilerplateTests */ = {isa = PBXNativeTarget; buildConfigurationList = 120000000000000000000002; buildPhases = (F100000000000000000000002, F00000000000000000000002, F200000000000000000000002,); buildRules = (); dependencies = (910000000000000000000001,); name = SwiftBoilerplateTests; productName = SwiftBoilerplateTests; productReference = D00000000000000000000002; productType = "com.apple.product-type.bundle.unit-test"; };
+		E00000000000000000000003 /* SwiftBoilerplateUITests */ = {isa = PBXNativeTarget; buildConfigurationList = 120000000000000000000003; buildPhases = (F100000000000000000000003, F00000000000000000000003, F200000000000000000000003,); buildRules = (); dependencies = (910000000000000000000002,); name = SwiftBoilerplateUITests; productName = SwiftBoilerplateUITests; productReference = D00000000000000000000003; productType = "com.apple.product-type.bundle.ui-testing"; };
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		010000000000000000000001 /* Project object */ = {isa = PBXProject; attributes = {BuildIndependentTargetsInParallel = 1; LastSwiftUpdateCheck = 1600; LastUpgradeCheck = 1600; TargetAttributes = {E00000000000000000000001 = {CreatedOnToolsVersion = 16.0; }; E00000000000000000000002 = {CreatedOnToolsVersion = 16.0; TestTargetID = E00000000000000000000001; }; E00000000000000000000003 = {CreatedOnToolsVersion = 16.0; TestTargetID = E00000000000000000000001; }; }; }; buildConfigurationList = 120000000000000000000004; compatibilityVersion = "Xcode 14.0"; developmentRegion = en; hasScannedForEncodings = 0; knownRegions = (en, Base,); mainGroup = A00000000000000000000001; productRefGroup = A00000000000000000000007; projectDirPath = ""; projectRoot = ""; targets = (E00000000000000000000001, E00000000000000000000002, E00000000000000000000003,); };
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F200000000000000000000001 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (B00000000000000000000060,); runOnlyForDeploymentPostprocessing = 0; };
+		F200000000000000000000002 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		F200000000000000000000003 = {isa = PBXResourcesBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F100000000000000000000001 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B00000000000000000000001, B00000000000000000000002, B00000000000000000000003, B00000000000000000000004, B00000000000000000000005, B00000000000000000000006, B00000000000000000000007, B00000000000000000000008, B00000000000000000000009, B0000000000000000000000A, B0000000000000000000000B, B0000000000000000000000C, B0000000000000000000000D, B0000000000000000000000E, B0000000000000000000000F, B00000000000000000000010, B00000000000000000000011, B00000000000000000000012, B00000000000000000000013, B00000000000000000000014, B00000000000000000000015, B00000000000000000000016, B00000000000000000000017, B00000000000000000000018, B00000000000000000000019, B0000000000000000000001A, B0000000000000000000001B, B0000000000000000000001C, B0000000000000000000001D, B0000000000000000000001E, B0000000000000000000001F, B00000000000000000000020, B00000000000000000000021, B00000000000000000000022, B00000000000000000000023, B00000000000000000000024, B00000000000000000000025, B00000000000000000000026, B00000000000000000000027, B00000000000000000000028, B00000000000000000000029, B0000000000000000000002A, B0000000000000000000002B, B0000000000000000000002C, B0000000000000000000002D, B0000000000000000000002E, B0000000000000000000002F, B00000000000000000000030, B00000000000000000000031,); runOnlyForDeploymentPostprocessing = 0; };
+		F100000000000000000000002 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B00000000000000000000040, B00000000000000000000041, B00000000000000000000042, B00000000000000000000043,); runOnlyForDeploymentPostprocessing = 0; };
+		F100000000000000000000003 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (B00000000000000000000050,); runOnlyForDeploymentPostprocessing = 0; };
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		910000000000000000000001 = {isa = PBXTargetDependency; target = E00000000000000000000001; targetProxy = 900000000000000000000001; };
+		910000000000000000000002 = {isa = PBXTargetDependency; target = E00000000000000000000001; targetProxy = 900000000000000000000002; };
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		110000000000000000000001 /* Debug */ = {isa = XCBuildConfiguration; baseConfigurationReference = C00000000000000000000071; buildSettings = {ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; ENABLE_PREVIEWS = YES; INFOPLIST_FILE = SwiftBoilerplate/Config/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.SwiftBoilerplate; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Debug; };
+		110000000000000000000002 /* Release */ = {isa = XCBuildConfiguration; baseConfigurationReference = C00000000000000000000072; buildSettings = {ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor; CODE_SIGN_STYLE = Automatic; CURRENT_PROJECT_VERSION = 1; ENABLE_PREVIEWS = YES; INFOPLIST_FILE = SwiftBoilerplate/Config/Info.plist; IPHONEOS_DEPLOYMENT_TARGET = 17.0; LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks"; MARKETING_VERSION = 1.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.SwiftBoilerplate; PRODUCT_NAME = "$(TARGET_NAME)"; SUPPORTED_PLATFORMS = "iphoneos iphonesimulator"; SWIFT_EMIT_LOC_STRINGS = YES; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2"; }; name = Release; };
+		110000000000000000000003 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.SwiftBoilerplateTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBoilerplate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftBoilerplate"; }; name = Debug; };
+		110000000000000000000004 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {BUNDLE_LOADER = "$(TEST_HOST)"; CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.SwiftBoilerplateTests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_STRICT_CONCURRENCY = complete; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2"; TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftBoilerplate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SwiftBoilerplate"; }; name = Release; };
+		110000000000000000000005 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.SwiftBoilerplateUITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = SwiftBoilerplate; }; name = Debug; };
+		110000000000000000000006 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {CODE_SIGN_STYLE = Automatic; GENERATE_INFOPLIST_FILE = YES; IPHONEOS_DEPLOYMENT_TARGET = 17.0; PRODUCT_BUNDLE_IDENTIFIER = com.example.SwiftBoilerplateUITests; PRODUCT_NAME = "$(TARGET_NAME)"; SWIFT_VERSION = 5.9; TARGETED_DEVICE_FAMILY = "1,2"; TEST_TARGET_NAME = SwiftBoilerplate; }; name = Release; };
+		110000000000000000000007 /* Debug */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = dwarf; ENABLE_TESTABILITY = YES; GCC_C_LANGUAGE_STANDARD = gnu17; GCC_OPTIMIZATION_LEVEL = 0; IPHONEOS_DEPLOYMENT_TARGET = 17.0; ONLY_ACTIVE_ARCH = YES; SDKROOT = iphoneos; SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG; SWIFT_OPTIMIZATION_LEVEL = "-Onone"; }; name = Debug; };
+		110000000000000000000008 /* Release */ = {isa = XCBuildConfiguration; buildSettings = {ALWAYS_SEARCH_USER_PATHS = NO; CLANG_ENABLE_MODULES = YES; CLANG_ENABLE_OBJC_ARC = YES; COPY_PHASE_STRIP = NO; DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym"; ENABLE_NS_ASSERTIONS = NO; GCC_C_LANGUAGE_STANDARD = gnu17; IPHONEOS_DEPLOYMENT_TARGET = 17.0; SDKROOT = iphoneos; SWIFT_COMPILATION_MODE = wholemodule; SWIFT_OPTIMIZATION_LEVEL = "-O"; VALIDATE_PRODUCT = YES; }; name = Release; };
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		120000000000000000000001 = {isa = XCConfigurationList; buildConfigurations = (110000000000000000000001, 110000000000000000000002,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		120000000000000000000002 = {isa = XCConfigurationList; buildConfigurations = (110000000000000000000003, 110000000000000000000004,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		120000000000000000000003 = {isa = XCConfigurationList; buildConfigurations = (110000000000000000000005, 110000000000000000000006,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		120000000000000000000004 = {isa = XCConfigurationList; buildConfigurations = (110000000000000000000007, 110000000000000000000008,); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+/* End XCConfigurationList section */
+	};
+	rootObject = 010000000000000000000001;
+}

@@ -1,0 +1,47 @@
+name: SwiftBoilerplate
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    SWIFT_VERSION: 5.9
+    SWIFT_STRICT_CONCURRENCY: complete
+    TARGETED_DEVICE_FAMILY: "1,2"
+targets:
+  SwiftBoilerplate:
+    type: application
+    platform: iOS
+    sources:
+      - path: SwiftBoilerplate
+        excludes:
+          - Config
+          - Resources
+    resources:
+      - path: SwiftBoilerplate/Resources/Assets.xcassets
+    info:
+      path: SwiftBoilerplate/Config/Info.plist
+    configFiles:
+      Debug: SwiftBoilerplate/Config/Debug.xcconfig
+      Release: SwiftBoilerplate/Config/Release.xcconfig
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.SwiftBoilerplate
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ENABLE_PREVIEWS: true
+  SwiftBoilerplateTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: SwiftBoilerplateTests
+    dependencies:
+      - target: SwiftBoilerplate
+  SwiftBoilerplateUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: SwiftBoilerplateUITests
+    dependencies:
+      - target: SwiftBoilerplate

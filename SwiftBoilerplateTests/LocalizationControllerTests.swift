@@ -6,7 +6,7 @@ import Testing
 struct LocalizationControllerTests {
     @Test("Selected language is persisted and exposed as a locale")
     func selectsLanguage() {
-        let store = InMemoryLanguageStore(language: .system)
+        let store = InMemoryLanguageStore(language: .english)
         let controller = LocalizationController(store: store)
 
         controller.select(.indonesian)
@@ -14,6 +14,13 @@ struct LocalizationControllerTests {
         #expect(controller.language == .indonesian)
         #expect(controller.language.locale.identifier == "id")
         #expect(store.language == .indonesian)
+    }
+
+    @Test("Only English and Indonesian are offered")
+    func supportsTwoLanguages() {
+        #expect(AppLanguage.allCases == [.english, .indonesian])
+        #expect(AppLanguage.english.flag == "🇬🇧")
+        #expect(AppLanguage.indonesian.flag == "🇮🇩")
     }
 }
 

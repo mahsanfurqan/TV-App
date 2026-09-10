@@ -21,9 +21,9 @@ final class UserDefaultsLanguageStore: LanguageStoring {
 
     func load() -> AppLanguage {
         guard let value = userDefaults.string(forKey: key) else {
-            return .system
+            return .english
         }
-        return AppLanguage(rawValue: value) ?? .system
+        return AppLanguage(rawValue: value) ?? .english
     }
 
     func save(_ language: AppLanguage) {

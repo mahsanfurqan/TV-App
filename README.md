@@ -22,7 +22,7 @@ Signing is not required for the simulator. Select an Apple Developer team in Sig
 
 - Premium, dark-first discovery UI inspired by modern streaming products: featured hero, ranked content rails, genre collections, and an adaptive browse-all grid.
 - Fast local search across show names and genres.
-- English, Indonesian, and system-language modes switchable at runtime and persisted with `UserDefaults`.
+- English and Indonesian language modes switchable at runtime, identified by flags, and persisted with `UserDefaults`.
 - String Catalog localization for UI copy and the app display name.
 - Nullable ratings, images, summaries, and premiere dates are handled without unsafe assumptions.
 - Pull-to-refresh and optional infinite pagination.

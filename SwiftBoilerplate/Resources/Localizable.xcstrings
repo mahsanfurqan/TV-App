@@ -52,23 +52,6 @@
         }
       }
     },
-    "language.system": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "System Default"
-          }
-        },
-        "id": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ikuti Sistem"
-          }
-        }
-      }
-    },
     "language.english": {
       "extractionState": "manual",
       "localizations": {

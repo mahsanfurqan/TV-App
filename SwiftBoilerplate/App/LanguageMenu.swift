@@ -11,6 +11,7 @@ struct LanguageMenu: View {
                     controller.select(language)
                 } label: {
                     HStack {
+                        Text(verbatim: language.flag)
                         Text(LocalizedStringKey(language.localizationKey))
                         if controller.language == language {
                             Image(systemName: "checkmark")
@@ -19,10 +20,12 @@ struct LanguageMenu: View {
                 }
             }
         } label: {
-            Image(systemName: "globe")
-                .fontWeight(.semibold)
+            Text(verbatim: controller.language.flag)
+                .font(.title3)
+                .frame(width: 32, height: 32)
         }
         .accessibilityLabel(Text("language.selector.label"))
+        .accessibilityValue(Text(LocalizedStringKey(controller.language.localizationKey)))
         .accessibilityIdentifier("language.menu")
     }
 }

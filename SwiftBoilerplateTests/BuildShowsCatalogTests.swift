@@ -42,6 +42,6 @@ private func makeCatalogShow(
         premiered: premiered,
         summaryHTML: nil,
         mediumImageURL: nil,
-        originalImageURL: nil
+        originalImageURL: URL(string: "https://example.com/show-\(id).jpg")
     )
 }

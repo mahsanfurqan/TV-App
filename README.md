@@ -6,7 +6,7 @@ A native SwiftUI TV show browser backed by the public TVMaze API. The project is
 
 ## Walkthrough video
 
-The five-minute walkthrough link will be added here before submission.
+[Watch the five-minute walkthrough](https://drive.google.com/file/d/1vq_EZtYWA_VZrFehgW7NkHrwbpTUXxTC/view?usp=drive_link)
 
 ## Requirements
 
